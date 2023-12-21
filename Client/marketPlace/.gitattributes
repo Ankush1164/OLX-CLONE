@@ -1,0 +1,6 @@
+# Forcing LF (Unix-style) line endings for all files
+* text eol=lf
+
+# Or, if you're on Windows and prefer CRLF endings for specific files, use:
+*.js text eol=crlf
+*.css text eol=crlf
