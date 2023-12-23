@@ -43,9 +43,9 @@ function SellProducts() {
               position: "top-center",
               autoClose: 1000
             })
-            setTimeout(()=>{
+            setTimeout(() => {
               navigate("/")
-            },3000)
+            }, 3000)
 
 
           }
@@ -59,8 +59,8 @@ function SellProducts() {
   return (
     <>
       <ToastContainer />
-      <div className='w-full h-screen flex p-5 gap-2 bg-slate-100 sell_Products'>
-        <div className=' h-full w-2/4 bg-violet-200 p-4 overflow-scroll scroll_hidden rounded-md inputs_details'>
+      <div className='w-full h-screen flex p-5 gap-2 bg-slate-100 sell_Products sm:flex-col sm:w-full sm:h-full sm:gap-0'>
+        <div className=' h-full w-2/4 bg-slate-200 p-4 overflow-scroll scroll_hidden rounded-md  sm:w-full sm:h-fit'>
           <h1 className='text-xl ml-5 mt-5 mb-4 selling_heading'>Enter Selling Details..</h1>
 
           {/* All inputs */}
@@ -70,10 +70,10 @@ function SellProducts() {
               {/* Product Categories logic */}
               <div className='flex flex-col gap-2 w-2/4 selection'>
                 <label>Select Categories</label>
-                <select className='outline-none h-10 rounded-md cursor-pointer'
+                <select className="select select-bordered w-full max-w-xs"
                   onChange={(e) => { setCategories(e.target.value) }}
                   value={categories} required>
-                  <option >Choose</option>
+                  <option disabled selected>Select Categories</option>
                   <option value="Car">Car</option>
                   <option value="Bike">Bike</option>
                   <option value="Mobile">Mobile</option>
@@ -88,12 +88,10 @@ function SellProducts() {
               {/* Product condition logic */}
               <div className='flex flex-col gap-2 w-2/5 selection'>
                 <label>Select Product Condition</label>
-                <select className='outline-none h-10 rounded-md cursor-pointer'
-                  required
+                <select className="select select-bordered w-full max-w-xs"
                   value={productCondition}
-                  onChange={(e) => { setProductCondition(e.target.value) }}
-                >
-                  <option >Tap to select </option>
+                  onChange={(e) => { setProductCondition(e.target.value) }} required>
+                  <option disabled selected>Select Condition</option>
                   <option value="New">New</option>
                   <option value="Good">Good</option>
                   <option value="Average">Average</option>
@@ -107,10 +105,10 @@ function SellProducts() {
             <div className='w-full p-2 '>
               <div className='flex flex-col'>
                 <label htmlFor="">Product title</label>
-                <input type="text"
-                  required
+                <input type="text" placeholder="Product tittle" className="input input-bordered w-full max-w-full"
                   value={pTitle}
-                  onChange={(e) => { setPtitle(e.target.value) }} />
+                  onChange={(e) => { setPtitle(e.target.value) }}
+                />
               </div>
             </div>
 
@@ -118,8 +116,7 @@ function SellProducts() {
             <div className='w-full p-2 '>
               <div className='flex flex-col'>
                 <label htmlFor="">Product description</label>
-                <input type="text"
-                  required
+                <input type="text" placeholder="Product description" className="input input-bordered w-full max-w-full"
                   value={pDesc}
                   onChange={(e) => { setPdesc(e.target.value) }} />
               </div>
@@ -129,8 +126,7 @@ function SellProducts() {
             <div className='w-full p-2 '>
               <div className='flex flex-col'>
                 <label htmlFor="">Product Price</label>
-                <input type="text"
-                  required
+                <input type="text" placeholder="Product Price" className="input input-bordered w-full max-w-full"
                   value={pPrice}
                   onChange={(e) => { setPprice(e.target.value) }} />
               </div>
@@ -140,8 +136,7 @@ function SellProducts() {
             <div className='w-full p-2 '>
               <div className='flex flex-col'>
                 <label htmlFor="">Product Adress</label>
-                <input type="text"
-                  required
+                <input type="text" placeholder="Product Adress" className="input input-bordered w-full max-w-full"
                   value={pAddress}
                   onChange={(e) => { setPaddress(e.target.value) }} />
               </div>
@@ -151,22 +146,130 @@ function SellProducts() {
         </div>
 
         {/* Photo upload sec */}
-        <div className='bg-violet-200 rounded-md h-full w-2/4 flex gap-4 flex-col p-5 overflow-scroll scroll_hidden justify-center photo_Upload'>
+        <div className='bg-slate-200 rounded-md h-full w-2/4 flex gap-4 flex-col p-5 overflow-scroll scroll_hidden justify-center photo_Upload sm:w-full'>
           <div className=' w-full flex flex-col justify-center items-center gap-5 h-56'>
-          <input type="file" onChange={(e) => setPhoto1(e.target.files[0])} />
-          <input type="file"  onChange={(e) => setPhoto2(e.target.files[0])} />
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs"
+              onChange={(e) => setPhoto1(e.target.files[0])}/>
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs"
+              onChange={(e) => setPhoto2(e.target.files[0])}/>
           </div>
 
           <div className=' w-full p-2 flex justify-center items-center'>
-          <button onClick={handleSellingData} className=' rounded-md py-2 px-14 bg-black text-white'>Submit</button>
+            <button onClick={handleSellingData} className="btn btn-active btn-neutral w-56">Submit</button>
           </div>
 
-          </div>
         </div>
-        <Footer/>
+      </div>
+      <Footer />
     </>
 
   )
 }
 
 export default SellProducts
+
+
+// <div className='w-full h-screen flex p-5 gap-2 bg-slate-100 sell_Products'>
+// <div className=' h-full w-2/4 bg-violet-200 p-4 overflow-scroll scroll_hidden rounded-md inputs_details'>
+//   <h1 className='text-xl ml-5 mt-5 mb-4 selling_heading'>Enter Selling Details..</h1>
+
+//   {/* All inputs */}
+//   <div className='flex flex-col gap-2 all_inputs formContainer'>
+
+//     <div className='w-full p-2 flex gap-5 items-center justify-between categories_sec'>
+//       {/* Product Categories logic */}
+//       <div className='flex flex-col gap-2 w-2/4 selection'>
+//         <label>Select Categories</label>
+//         <select className='outline-none h-10 rounded-md cursor-pointer'
+//           onChange={(e) => { setCategories(e.target.value) }}
+//           value={categories} required>
+//           <option >Choose</option>
+//           <option value="Car">Car</option>
+//           <option value="Bike">Bike</option>
+//           <option value="Mobile">Mobile</option>
+//           <option value="Accessories">Accessories</option>
+//           <option value="Furniture">Furniture</option>
+//           <option value="House">House</option>
+//           <option value="laptop">Laptop</option>
+//           <option value="watch">Watch</option>
+//         </select>
+//       </div>
+
+//       {/* Product condition logic */}
+//       <div className='flex flex-col gap-2 w-2/5 selection'>
+//         <label>Select Product Condition</label>
+//         <select className='outline-none h-10 rounded-md cursor-pointer'
+//           required
+//           value={productCondition}
+//           onChange={(e) => { setProductCondition(e.target.value) }}
+//         >
+//           <option >Tap to select </option>
+//           <option value="New">New</option>
+//           <option value="Good">Good</option>
+//           <option value="Average">Average</option>
+//           <option value="Poor">Poor</option>
+//           <option value="Damaged">Damaged</option>
+//         </select>
+//       </div>
+//     </div>
+
+//     {/* .................. */}
+//     <div className='w-full p-2 '>
+//       <div className='flex flex-col'>
+//         <label htmlFor="">Product title</label>
+//         <input type="text"
+//           required
+//           value={pTitle}
+//           onChange={(e) => { setPtitle(e.target.value) }} />
+//       </div>
+//     </div>
+
+//     {/* ................ */}
+//     <div className='w-full p-2 '>
+//       <div className='flex flex-col'>
+//         <label htmlFor="">Product description</label>
+//         <input type="text"
+//           required
+//           value={pDesc}
+//           onChange={(e) => { setPdesc(e.target.value) }} />
+//       </div>
+//     </div>
+
+//     {/* .................. */}
+//     <div className='w-full p-2 '>
+//       <div className='flex flex-col'>
+//         <label htmlFor="">Product Price</label>
+//         <input type="text"
+//           required
+//           value={pPrice}
+//           onChange={(e) => { setPprice(e.target.value) }} />
+//       </div>
+//     </div>
+
+//     {/* .................... */}
+//     <div className='w-full p-2 '>
+//       <div className='flex flex-col'>
+//         <label htmlFor="">Product Adress</label>
+//         <input type="text"
+//           required
+//           value={pAddress}
+//           onChange={(e) => { setPaddress(e.target.value) }} />
+//       </div>
+//     </div>
+
+//   </div>
+// </div>
+
+// {/* Photo upload sec */}
+// <div className='bg-violet-200 rounded-md h-full w-2/4 flex gap-4 flex-col p-5 overflow-scroll scroll_hidden justify-center photo_Upload'>
+//   <div className=' w-full flex flex-col justify-center items-center gap-5 h-56'>
+//   <input type="file" onChange={(e) => setPhoto1(e.target.files[0])} />
+//   <input type="file"  onChange={(e) => setPhoto2(e.target.files[0])} />
+//   </div>
+
+//   <div className=' w-full p-2 flex justify-center items-center'>
+//   <button onClick={handleSellingData} className=' rounded-md py-2 px-14 bg-black text-white'>Submit</button>
+//   </div>
+
+//   </div>
+// </div>

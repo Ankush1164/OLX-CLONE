@@ -78,15 +78,15 @@
     display: none;
     z-index: 1;
 }
-.footer_Setting{
+.footer_setting{
     display: none;
-    background-color: red;
+    background-color: green;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-@media screen and (max-width: 420px) {
+/* @media screen and (max-width: 420px) {
     .left_Side{
         display: none;
         background-color: red;
@@ -193,7 +193,8 @@
         display: flex;
         justify-content: center;
     }
-    .footers_Icons{
+    .footer_setting{
+        background-color: red;
         display: block;
         display: flex;
         justify-content: space-around;
@@ -206,4 +207,4 @@
         flex-direction: column;
         overflow-x: scroll;
     }
-  }
+  } */

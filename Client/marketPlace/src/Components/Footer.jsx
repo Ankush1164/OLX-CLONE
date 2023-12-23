@@ -9,15 +9,14 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <>
-    <div className='footer_Setting'>
-        <Link to={"/"}><HomeIcon/></Link>
-        <Link to={"/likedProducts"}><FavoriteIcon/></Link>
-        <div className='w-12 h-12 z-10 -mt-5 bg-violet-400 rounded-full flex items-center justify-center'>
-            <Link to={"/sell"}><AddIcon/></Link>
-        </div>
-        <Link to={"/MyProducts"}><LocalMallIcon/></Link>
-        <Person3Icon />
-
+    <div className='hidden'>
+      <Link to={"/"}><HomeIcon/></Link>
+      <Link to={"/likedProducts"}><FavoriteIcon/></Link>
+      <div className='w-12 h-12 z-10 -mt-5 bg-violet-400 rounded-full flex items-center justify-center'>
+        <Link to={"/sell"}><AddIcon/></Link>
+      </div>
+      <Link to={"/MyProducts"}><LocalMallIcon/></Link>
+      <Person3Icon />
     </div>
     </>
   )

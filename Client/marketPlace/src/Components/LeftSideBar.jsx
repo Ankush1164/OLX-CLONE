@@ -26,7 +26,7 @@ function LeftSideBar(props) {
   return (
     <>
       <ToastContainer />
-      <div className="bg-violet-100 h-full w-72 p-2 flex flex-col border-r-2 left_Side border-violet-300">
+      <div className="bg-violet-100 h-full sm:hidden w-72 p-2 flex flex-col border-r-2 left_Side border-violet-300">
         {/* User Name or user Image field */}
         <div className=' w-full h-16 flex items-center gap-2 p-3 border-b'>
           <div className='bg-black h-12 w-12 rounded-md'></div>
