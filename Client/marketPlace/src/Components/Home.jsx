@@ -97,10 +97,13 @@ function Home() {
                 <LeftSideBar search={search} handleSearch={handleSearch} handleClick={handleClick} />
 
                 <div className='bg-violet-100  w-full flex flex-wrap overflow-y-scroll gap-6 pt-5 scroll_hidden sm:pl-3 items-center sm:p-2'>
+                    <div className='w-11/12 m-auto flex flex-wrap gap-5'>
+
                     {loading ? (
                         <Loading />
                     ) : (
                         // Render products when data fetching is complete
+
                         (products && products.length > 0) ? (
                             products.map((data) => (
                                 <div key={data.id} className="card h-72 mb-5 rounded-lg w-60 shadow-xl sm:w-52 sm:h-72">
@@ -127,6 +130,8 @@ function Home() {
                             <div className='flex-grow flex justify-center items-center'><p>No records found🙁</p></div>
                         )
                     )}
+
+                    </div>
                 </div>
 
             </div>

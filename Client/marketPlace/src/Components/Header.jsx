@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ContactUs from './ContactUs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function Header() {
     const handleLogout = () => {
@@ -10,10 +11,10 @@ function Header() {
         localStorage.removeItem("UserData")
         toast.success("User logout successfully")
         window.location.reload();
-      }
+    }
     return (
         <>
-        <ToastContainer/>
+            <ToastContainer />
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -27,13 +28,13 @@ function Header() {
                             <li><Link to={"/ContactUs"}>Contact Us</Link></li>
                             {
                                 !localStorage.getItem("TOKEN") ? (
-                                    <Link to={"/login"}><button className='px-4 bg-black text-white rounded-md text-center text-sm py-2'>Login</button></Link>
+                                    <Link to={"/login"}><button className='px-4 bg-black text-white rounded-md text-center text-sm py-2 w-full'>Login</button></Link>
                                 ) : (
-                                    <button className='px-4 bg-black text-white rounded-md text-center text-sm py-2' onClick={handleLogout}>LogOut</button>
+                                    <button className='px-4 bg-black text-white rounded-md text-center text-sm py-2 w-full' onClick={handleLogout}>LogOut</button>
                                 )
                             }
 
-                            <Link to={"/register"}><button className='bg-slate-200 font-semibold px-3 py-2 rounded-md text-sm'>Create Account</button></Link>
+                            <Link to={"/register"}><button className='bg-slate-200 font-semibold px-3 py-2 rounded-md text-sm w-full'>Create Account</button></Link>
 
                         </ul>
                     </div>

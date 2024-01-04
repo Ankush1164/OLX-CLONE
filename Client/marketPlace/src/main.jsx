@@ -42,10 +42,10 @@ const router = createBrowserRouter([
     path:"likedProducts",
     element:<LikedProducts/>
   },
-  {
-    path:"MyProducts",
-    element:<MyProducts/>
-  },
+    {
+      path: 'MyProducts',
+      element: <MyProducts />,
+    },
   {
     path:"ContactUs",
     element:<ContactUs/>

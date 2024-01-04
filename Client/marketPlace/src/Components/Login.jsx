@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import loginImage from "../Assest/loginImage.jpg"
-import welcomeLogo from "../Assest/loginLogo.png"
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -11,37 +10,50 @@ function Login() {
 
   const navigate = useNavigate()
 
-  const handleLogin = async () => {
-    try {
-      const userLogin = await fetch("http://localhost:4000/api/login", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      })
-      const data = await userLogin.json();
-      if (data.message) {
-        console.log(data.data)
-        toast.success(data.message);
-        if (data.token) {
-          localStorage.setItem("TOKEN", data.token)
-          localStorage.setItem("UserId", data.userId)
-          localStorage.setItem("UserData", JSON.stringify(data.data))
-        }
-        navigate("/");
-      } else {
-        toast.error(data.error);
+  const handleLogin = () => {
+    const url = "http://localhost:4000/api/login";
+    
+    axios.post(url, {
+      email: email,
+      password: password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
       }
-    }
-    catch (er) {
-      console.error(er)
-      alert("Server Error")
-    }
-  }
+    })
+    .then(response => {
+      if (response.status >= 200 && response.status < 300) {
+        const data = response.data;
+    
+        if (data.token) {
+          localStorage.setItem('TOKEN', data.token);
+          localStorage.setItem('UserId', data.userId);
+          localStorage.setItem('UserData', JSON.stringify(data.data));
+    
+          if (data.message) {
+            toast.success(data.message);
+          }
+          navigate('/');
+        } else {
+          toast.error(data.error);
+        }
+      } else {
+        // Handle non-successful response
+        throw new Error("Network response was not ok");
+      }
+    })
+    .catch(error => {
+      if (error.response) {
+        console.error('Server responded with an error:', error.response.data);
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+      } else {
+        console.error('Request setup error:', error.message);
+      }
+    });
+  };
+
+
   return (
     <>
       <ToastContainer />
